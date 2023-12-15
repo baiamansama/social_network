@@ -16,7 +16,10 @@ function App() {
         }
 
         const data = await response.json();
-        setPosts(data);
+        const result = data.sort((a, b) => {
+          return b.timestamp.localeCompare(a.timestamp);
+        })
+        setPosts(result);
       } catch (error) {
         console.error(error);
         alert('Error fetching posts');
