@@ -61,6 +61,7 @@ jobs:
         with:
           name: api
           path: api.zip
+          # for testing purposes
 
   # CD:
   #   runs-on: ubuntu-latest
