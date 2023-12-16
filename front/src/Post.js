@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Post.css'
 import { Avatar, Button } from "@mui/material"
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const BASE_URL = 'http://localhost:8000/'
 
@@ -29,7 +30,7 @@ function Post({ post }) {
         />
         <div className='post_headerInfo'>
           <h3>{post.user.username}</h3>
-          <Button className='post_delete' variant="outlined">Delete</Button>
+          <Button className='post_delete' variant="outlined" startIcon={<DeleteIcon />}>Delete</Button>
         </div>
       </div>
       <img
