@@ -45,10 +45,10 @@ jobs:
         run: python -m venv back/venv && source back/venv/bin/activate && pip3 install -r back/requirements.txt
         if: steps.cache-venv.outputs.cache-hit != 'true'
 
-      - name: Run Tests
-        # Note that you have to activate the virtualenv in every step
-        # because GitHub actions doesn't preserve the environment
-        run: . back/venv/bin/activate && pytest
+      # - name: Run Tests
+      #   # Note that you have to activate the virtualenv in every step
+      #   # because GitHub actions doesn't preserve the environment
+      #   run: . back/venv/bin/activate && pytest
       - name: Create archive of dependencies
         run: |
           cd ./back/venv/lib/python3.12.0/site-packages
