@@ -1,8 +1,11 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, MetaData
 from sqlalchemy.orm import relationship
 from .database import Base
 
+metadata = MetaData()
+
 class DbUser(Base):
+    __metadata__ = metadata
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True, index=True, unique=True)
     username = Column(String, index=True, unique=True)
@@ -11,6 +14,7 @@ class DbUser(Base):
     items = relationship('DbPost', back_populates='user')
 
 class DbPost(Base):
+    __metadata__ = metadata
     __tablename__ = 'posts'
     id = Column(Integer, primary_key=True, index=True, unique=True)
     image_url = Column(String)
@@ -22,6 +26,7 @@ class DbPost(Base):
     comments = relationship('DbComment', back_populates='post')
 
 class DbComment(Base):
+    __metadata__ = metadata
     __tablename__ = 'comments'
     id = Column(Integer, primary_key=True, index=True, unique=True)
     text = Column(String)
